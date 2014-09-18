@@ -1,0 +1,33 @@
+CS118 Project 2
+
+Project Summary
+
+I) Team Members:  
+Sangyeop Lee: 003-950-078
+Julian Brown: 303-946-971
+Dennis Shen: 004-002-509
+
+II) Individual Contribution:
+Sangyeop Lee: implemented icmp echo request / reply. came up with the idea of dividing up sr_handlepacket
+into the case when 1) ping/traceroutes are forwarded to router's interfaces and 2) forwarded to web servers.
+Also implemented the function to find the address with the longest prefix matching. (pathSeeker())
+
+Julian Brown: implemented icmp_handler() to handle type 3 and type 11 icmp messages and was also responsible for 
+handling arp request (forwardNewRequest() and arpHandler()) and using them in sr_arpcache_sweepreqs()
+
+Dennis Shen: handled arp request and sending arp replies in sr_handlepacket. also wrote the checksumming ip header
+in sr_handlepacket. debugged the code a lot. also responsible for checking whether header size is sane, and whether
+protocol types are valid etc.
+
+III) What our code does
+our code supports the following functionalities 
+1) pinging from the client to any of the router's interfaces (192.168.2.1, 172.64.3.1, 10.0.1.1) 
+2) Tracerouting from the client to any of the routher's interfaces
+3) Pinging from the client to any of the app servers (192.168.2.2, 172.64.3.10)
+4) Tracerouting from the client to any of the app servers 
+5) Downloading a file using HTTP from one of the app servers
+
+Note: Due to time constraint and other commitments to other classes, 
+we were unable to test our router's capabilities beyond the above 5 functionalities, although we believe
+our sweepreq implementation is very accurate, conforming to the pseudocode in the sr_arpcache.h file
+
